@@ -1,13 +1,88 @@
 .header {
-    height: 40vh;
-    background-color: $primary-color;
-    .nav {
-        height: 20%;
-        margin: 1rem 3rem;
-        border-bottom: 2px solid $light-grey;
+  height: 45vh;
+  width: 100%;
+  background-color: $primary-color;
+  .nav {
+    height: 20%;
+    margin: 0rem 5rem 0rem 3rem;
+    border-bottom: 2px solid $light-grey;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 1.4rem;
 
-        &__logo{
-            height: 5rem;
-        }
+    &-logo__container {
+      display: flex;
+      align-items: center;
     }
+
+    &__logo {
+      height: 4rem;
+      @include small-screen {
+        display: none;
+      }
+    }
+    &__list {
+      margin-left: 4rem;
+      display: flex;
+      list-style: none;
+      color: $primary-text-color;
+      @include small-screen {
+        margin-left: 0;
+      }
+
+      li {
+        padding: 0 2.5rem;
+      }
+    }
+    &__account {
+      display: flex;
+      align-items: center;
+      &--cart {
+        margin: 0 2rem;
+      }
+      select {
+        padding: 0.5rem;
+        border: 3px solid $light-grey;
+        //   color: $primary-text-color;
+      }
+    }
+  }
+
+  &__second-section {
+    padding: 5rem 10rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    @include small-screen {
+      display: block;
+      padding: 10rem 5rem 5rem 5rem;
+    }
+    &--text {
+      &__big {
+        font-size: 5rem;
+      }
+      &__small {
+        font-size: 1.8rem;
+      }
+    }
+    &--filter {
+      // width: 15rem;
+      @include small-screen {
+        margin: 5rem 0;
+      }
+      select {
+        background-color: transparent;
+        border: 3px solid $light-grey;
+        padding: 0 1em;
+        margin: 0;
+        height: 5rem;
+        width: 35rem;
+        font-size: 1.7rem;
+        @include small-screen {
+          width: 100%;
+        }
+      }
+    }
+  }
 }
