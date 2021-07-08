@@ -1,0 +1,13 @@
+.header {
+    height: 40vh;
+    background-color: $primary-color;
+    .nav {
+        height: 20%;
+        margin: 1rem 3rem;
+        border-bottom: 2px solid $light-grey;
+
+        &__logo{
+            height: 5rem;
+        }
+    }
+}
