@@ -2,6 +2,9 @@
   height: 45vh;
   width: 100%;
   background-color: $primary-color;
+  @include small-screen {
+   height: 50vh;
+  }
   .nav {
     height: 20%;
     margin: 0rem 5rem 0rem 3rem;
@@ -10,10 +13,19 @@
     align-items: center;
     justify-content: space-between;
     font-size: 1.4rem;
+    @include small-screen {
+      margin: 0 0 3rem 0;
+      padding: 0 2rem;
+    }
 
     &-logo__container {
       display: flex;
       align-items: center;
+
+      @include small-screen {
+        position: relative;
+        width: 100%;
+      }
     }
 
     &__logo {
@@ -28,7 +40,14 @@
       list-style: none;
       color: $primary-text-color;
       @include small-screen {
-        margin-left: 0;
+        display: flex;
+        flex-direction: column;
+        // background-color: white;
+        position: absolute;
+        top: 3rem;
+        left: 0;
+        width: 100%;
+        margin: 0;
       }
 
       li {
@@ -38,6 +57,9 @@
     &__account {
       display: flex;
       align-items: center;
+      @include small-screen {
+        font-size: 2rem;
+      }
       &--cart {
         margin: 0 2rem;
       }
@@ -72,7 +94,7 @@
         margin: 5rem 0;
       }
       select {
-        background-color: transparent;
+        background-color: white;
         border: 3px solid $light-grey;
         padding: 0 1em;
         margin: 0;
@@ -84,5 +106,26 @@
         }
       }
     }
+  }
+}
+
+.hamburger-menu {
+  font-size: 2.5rem;
+  position: absolute;
+  left: 2%;
+  cursor: pointer;
+  display: none;
+
+
+  @include small-screen {
+    display: flex;
+    // position: relative;
+    width: 100%;
+  }
+}
+
+.normal-nav {
+  @include small-screen {
+    display: none;
   }
 }

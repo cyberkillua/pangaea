@@ -56,6 +56,12 @@ html {
   background-color: #F5F5F4;
 }
 
+@media (max-width: 48em) {
+  .header {
+    height: 50vh;
+  }
+}
+
 .header .nav {
   height: 20%;
   margin: 0rem 5rem 0rem 3rem;
@@ -72,6 +78,13 @@ html {
   font-size: 1.4rem;
 }
 
+@media (max-width: 48em) {
+  .header .nav {
+    margin: 0 0 3rem 0;
+    padding: 0 2rem;
+  }
+}
+
 .header .nav-logo__container {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -79,6 +92,13 @@ html {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+@media (max-width: 48em) {
+  .header .nav-logo__container {
+    position: relative;
+    width: 100%;
+  }
 }
 
 .header .nav__logo {
@@ -102,7 +122,18 @@ html {
 
 @media (max-width: 48em) {
   .header .nav__list {
-    margin-left: 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    position: absolute;
+    top: 3rem;
+    left: 0;
+    width: 100%;
+    margin: 0;
   }
 }
 
@@ -117,6 +148,12 @@ html {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+@media (max-width: 48em) {
+  .header .nav__account {
+    font-size: 2rem;
+  }
 }
 
 .header .nav__account--cart {
@@ -163,7 +200,7 @@ html {
 }
 
 .header__second-section--filter select {
-  background-color: transparent;
+  background-color: white;
   border: 3px solid #E2E6E3;
   padding: 0 1em;
   margin: 0;
@@ -176,5 +213,33 @@ html {
   .header__second-section--filter select {
     width: 100%;
   }
+}
+
+.hamburger-menu {
+  font-size: 2.5rem;
+  position: absolute;
+  left: 2%;
+  cursor: pointer;
+  display: none;
+}
+
+@media (max-width: 48em) {
+  .hamburger-menu {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 100%;
+  }
+}
+
+@media (max-width: 48em) {
+  .normal-nav {
+    display: none;
+  }
+}
+
+.product {
+  min-height: 55VH;
+  background-color: #E2E6E3;
 }
 /*# sourceMappingURL=index.css.map */

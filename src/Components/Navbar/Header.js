@@ -1,5 +1,7 @@
 import React from "react";
 import Logo from "../../assets/logo.svg";
+import Burger from "./Burger";
+import NormalNav from "./NormalNav";
 
 const Header = () => {
   return (
@@ -7,11 +9,8 @@ const Header = () => {
       <nav className="nav">
         <div className="nav-logo__container">
           <img src={Logo} alt="logo" className="nav__logo" />
-          <ul className="nav__list">
-            <li>Shop</li>
-            <li>Help</li>
-            <li>Blog</li>
-          </ul>
+          <NormalNav />
+          <Burger />
         </div>
 
         <div className="nav__account">
@@ -32,7 +31,9 @@ const Header = () => {
       <section className="header__second-section">
         <div className="header__second-section--text">
           <p className="header__second-section--text__big">All Products</p>
-          <p className="header__second-section--text__small">A 360° look at Lumin</p>
+          <p className="header__second-section--text__small">
+            A 360° look at Lumin
+          </p>
         </div>
         <div className="header__second-section--filter">
           <select>
