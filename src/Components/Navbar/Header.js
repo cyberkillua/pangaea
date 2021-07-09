@@ -21,7 +21,7 @@ const Header = () => {
           <select>
             <option value="FR">FR</option>
             <option value="AR">AR</option>
-            <option selected value="EN">
+            <option defaultValue value="EN">
               EN
             </option>
             <option value="ES">ES</option>
@@ -37,7 +37,7 @@ const Header = () => {
         </div>
         <div className="header__second-section--filter">
           <select>
-            <option selected value="#">
+            <option defaultValue value="#">
               Filter by
             </option>
             <option value="AR">All Products</option>

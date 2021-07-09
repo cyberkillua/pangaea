@@ -1,4 +1,40 @@
 .product {
     min-height: 55VH;
     background-color: $light-grey;
+    padding-top: 5rem;
+    .product-container {
+        width: 90%;
+        margin: 0 auto 0 auto;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        // grid-template-rows: 20rem 20rem 20rem;
+        grid-row-gap: 5rem;
+        @include small-screen {
+            grid-template-columns: repeat(2, 1fr);
+            width: 100%;
+        }
+    }
+    .product-1{
+        text-align: center;
+        line-height: 1.5;
+        padding: 1rem;
+        // color: $primary-text-color;
+        &__img {
+            height: 10rem;
+            @include small-screen {
+                height: 7rem; 
+            }
+        }
+        &__title {
+            font-size: 1.3rem;
+            margin: .8rem 0;
+            @include small-screen {
+                font-size: 1.5rem; 
+            }
+            
+        }
+        &_price {
+            font-size: 2.3rem;
+        }
+    }
 }
