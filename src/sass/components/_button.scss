@@ -5,11 +5,11 @@
   font-size: 1.4rem;
   background-color: $secondary-color;
   color: $primary-white;
+  
 
   &:hover {
     box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
     filter: brightness(50%);
     color: white;
-
   }
 }

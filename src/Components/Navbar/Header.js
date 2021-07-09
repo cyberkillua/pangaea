@@ -2,8 +2,9 @@ import React from "react";
 import Logo from "../../assets/logo.svg";
 import Burger from "./Burger";
 import NormalNav from "./NormalNav";
+import Sidebar from "../Sidebar";
 
-const Header = () => {
+const Header = ({ open, setOpen }) => {
   return (
     <header className="header">
       <nav className="nav">
@@ -16,12 +17,15 @@ const Header = () => {
         <div className="nav__account">
           <p>Account</p>
           <div className="nav__account--cart">
-            <ion-icon name="cart-outline"></ion-icon>
+            <ion-icon
+              name="cart-outline"
+              onClick={() => setOpen(!open)}
+            ></ion-icon>
           </div>
           <select>
             <option value="FR">FR</option>
             <option value="AR">AR</option>
-            <option defaultValue value="EN">
+            <option defaultValue="EN">
               EN
             </option>
             <option value="ES">ES</option>
@@ -46,6 +50,7 @@ const Header = () => {
           </select>
         </div>
       </section>
+      {open && <Sidebar open={open} setOpen={setOpen} />}
     </header>
   );
 };

@@ -1,5 +1,5 @@
 .header {
-  height: 45vh;
+  height: 50vh;
   width: 100%;
   background-color: $primary-color;
   @include small-screen {
@@ -42,12 +42,13 @@
       @include small-screen {
         display: flex;
         flex-direction: column;
-        // background-color: white;
+        background-color: white;
         position: absolute;
-        top: 3rem;
+        top: 4.5rem;
         left: 0;
-        width: 100%;
+        width: 40rem;
         margin: 0;
+        font-size: 2rem;
       }
 
       li {
@@ -62,6 +63,7 @@
       }
       &--cart {
         margin: 0 2rem;
+        font-size: 2.5rem;
       }
       select {
         padding: 0.5rem;

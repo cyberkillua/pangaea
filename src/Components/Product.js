@@ -28,7 +28,7 @@ const Product = () => {
               NGN {item.price.toLocaleString("en-US")}.00
             </p>
             <div className="product-1__btn">
-              <button className="btn">Add to Cart</button>
+              <button className="btn btn-width">Add to Cart</button>
             </div>
           </div>
         ))}

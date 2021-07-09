@@ -8,6 +8,7 @@ import {
   from,
 } from "@apollo/client";
 import { onError } from "@apollo/client/link/error";
+import { useState } from "react";
 
 const errorLink = onError(({ graphqlErrors, networkError }) => {
   if (graphqlErrors) {
@@ -28,10 +29,11 @@ const client = new ApolloClient({
 });
 
 function App() {
+  const [open, setOpen] = useState(false);
   return (
     <ApolloProvider client={client}>
       <div className="App">
-        <Header />
+        <Header open={open} setOpen={setOpen} />
         <Product />
       </div>
     </ApolloProvider>
