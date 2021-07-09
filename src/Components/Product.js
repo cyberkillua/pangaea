@@ -22,9 +22,14 @@ const Product = () => {
               alt="product"
               className="product-1__img"
             />
-            
+
             <p className="product-1__title">{item.title}</p>
-            <p className="product-1__price">NGN {item.price.toLocaleString('en-US')}.00</p>
+            <p className="product-1__price">
+              NGN {item.price.toLocaleString("en-US")}.00
+            </p>
+            <div className="product-1__btn">
+              <button className="btn">Add to Cart</button>
+            </div>
           </div>
         ))}
       </div>

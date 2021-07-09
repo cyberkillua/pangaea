@@ -1,23 +1,15 @@
 .btn {
-  &:link,
-  &:visited {
-    text-transform: uppercase;
-    text-decoration: none;
-    padding: 1.5rem 4.8rem;
-    display: inline-block;
-    border-radius: 10rem;
-    position: relative;
-    font-size: 1.6rem;
-    /* transition: ; */
-  }
+  text-decoration: none;
+  padding: 1.5rem 4rem;
+  display: inline-block;
+  font-size: 1.4rem;
+  background-color: $secondary-color;
+  color: $primary-white;
 
   &:hover {
-    transform: translateY(-0.3rem);
     box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
-  }
+    filter: brightness(50%);
+    color: white;
 
-  &:active {
-    transform: translateY(-0.1rem);
-    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
   }
 }
