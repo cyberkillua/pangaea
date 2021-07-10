@@ -26,8 +26,8 @@ const Sidebar = ({ open, setOpen }) => {
           </select>
         </div>
         <div className="cart-items">
-          {cartItems.map((item, key) => (
-            <div className="cart-items-list" key={key}>
+          {cartItems.map((item) => (
+            <div className="cart-items-list" key={item.id}>
               <div className="cart-items-list__title">
                 <div className="title"> {item.title}</div>
                 <div className="cart-items-list__price">

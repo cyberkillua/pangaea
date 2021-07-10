@@ -1,12 +1,12 @@
 import { useEffect, useState, useContext } from "react";
-import { useQuery} from "@apollo/client";
+import { useQuery } from "@apollo/client";
 import { LOAD_CUR_AND_PROD } from "../GraphQL/Queries";
 import CartContext from "../context/cart/CartContext";
 
 const Product = ({ open, setOpen }) => {
   const { data } = useQuery(LOAD_CUR_AND_PROD);
   const [product, setProduct] = useState([]);
-  const { addToCart } = useContext(CartContext);
+  const { addToCart, increaseItem } = useContext(CartContext);
 
   useEffect(() => {
     if (data) {
@@ -17,7 +17,12 @@ const Product = ({ open, setOpen }) => {
 
   const addItToCart = (item) => {
     setOpen(!open);
-    addToCart(item);
+    console.log(item.quantity)
+    if (item.quantity) {
+      increaseItem(item.id);
+    } else {
+      addToCart(item);
+    }
   };
 
   return (

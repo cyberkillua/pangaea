@@ -9,10 +9,25 @@ const CartReducer = (state, action) => {
   switch (action.type) {
     case ADD_TO_CART: {
       console.log(action.payload.id);
-      return {
-        ...state,
-        cartItems: [...state.cartItems, { ...action.payload, quantity: 1 }],
-      };
+      // console.log(state.cartItem);
+      if (state.cartItems.length < 1) {
+        return {
+          ...state,
+          cartItems: [...state.cartItems, { ...action.payload, quantity: 1 }],
+        };
+      } else {
+        return {
+          cartItems: state.cartItems.map((item) => {
+            if (item.id === action.payload.id) {
+              return {
+                ...item,
+                quantity: item.quantity + 1,
+              };
+            }
+            return item;
+          }),
+        };
+      }
     }
     case REMOVE_ITEM: {
       return {
