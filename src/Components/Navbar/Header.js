@@ -3,8 +3,11 @@ import Logo from "../../assets/logo.svg";
 import Burger from "./Burger";
 import NormalNav from "./NormalNav";
 import Sidebar from "../Sidebar";
+import { useContext } from "react";
+import CartContext from "../../context/cart/CartContext";
 
 const Header = ({ open, setOpen }) => {
+  const { cartItems } = useContext(CartContext);
   return (
     <header className="header">
       <nav className="nav">
@@ -21,13 +24,21 @@ const Header = ({ open, setOpen }) => {
               name="cart-outline"
               onClick={() => setOpen(!open)}
             ></ion-icon>
+            {cartItems.length > 0 && (
+              <div className="item__count">
+                <span>
+                  {cartItems.reduce((acc, cv) => {
+                    acc = acc + cv.quantity;
+                    return acc;
+                  }, 0)}
+                </span>
+              </div>
+            )}
           </div>
           <select>
             <option value="FR">FR</option>
             <option value="AR">AR</option>
-            <option defaultValue="EN">
-              EN
-            </option>
+            <option defaultValue="EN">EN</option>
             <option value="ES">ES</option>
           </select>
         </div>

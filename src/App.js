@@ -34,7 +34,7 @@ function App() {
     <ApolloProvider client={client}>
       <div className="App">
         <Header open={open} setOpen={setOpen} />
-        <Product />
+        <Product open={open} setOpen={setOpen}/>
       </div>
     </ApolloProvider>
   );

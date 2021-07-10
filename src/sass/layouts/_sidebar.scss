@@ -2,29 +2,6 @@
   width: 100%;
 }
 
-.side-bar {
-  background-color: $primary-color;
-  position: absolute;
-  top: 0;
-  right: 0;
-  height: 100vh;
-  width: 50rem;
-  animation: rightin 0.5s ease-in;
-  padding: 2rem;
-  color: $primary-text-color;
-  @include small-screen {
-    width: 100%;
-  }
-  
-  &__heading {
-    font-size: 1.6rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 50%;
-  }
-}
-
 .background-blur {
   background-color: $light-grey;
   opacity: 0.8;
@@ -33,6 +10,79 @@
   left: 0;
   width: 100%;
   height: 100%;
+}
+
+.side-bar {
+  background-color: $primary-color;
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: 55rem;
+  animation: rightin 0.5s ease-in;
+  padding: 2rem;
+  color: $primary-text-color;
+  @include small-screen {
+    width: 100%;
+  }
+
+  &__heading {
+    font-size: 1.6rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 50%;
+  }
+
+  .cart-items {
+    // padding: 0 1rem;
+    &-list {
+      height: 15rem;
+      background-color: white;
+      margin: 1.5rem 0;
+      padding: 2rem 1.5rem;
+      display: flex;
+      box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+
+      &__title {
+        width: 70%;
+        font-weight: 700;
+        font-size: 1.6rem;
+        line-height: 1;
+        .title {
+          height: 60%;
+          // background-color: yellow;
+        }
+      }
+      &__price {
+        // background-color: violet;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        height: 40%;
+        padding-right: 3rem;
+        .quantity {
+          border: 1px solid black;
+          height: 3rem;
+          width: 7rem;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 0 0.5rem;
+          cursor: pointer;
+        }
+      }
+      &__image {
+        width: 30%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        img {
+          height: 8rem;
+        }
+      }
+    }
+  }
 }
 
 @keyframes rightin {
@@ -56,29 +106,5 @@
   100% {
     opacity: 1;
     transform: translate(0);
-  }
-}
-
-@keyframes leftin {
-  0% {
-    opacity: 1;
-    transform: translateX(0);
-  }
-  25% {
-    opacity: 0.75;
-    transform: translateX(15rem);
-  }
-  50% {
-    opacity: 0.5;
-    transform: translateX(25rem);
-  }
-  75% {
-    opacity: 0.25;
-    transform: translateX(35rem);
-  }
-
-  100% {
-    opacity: 0;
-    transform: translate(50rem);
   }
 }
