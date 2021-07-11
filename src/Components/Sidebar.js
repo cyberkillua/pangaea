@@ -2,8 +2,7 @@ import { useContext, useState } from "react";
 import CartContext from "../context/cart/CartContext";
 
 const Sidebar = ({ open, setOpen }) => {
-  const { cartItems, increaseItem, decreaseItem } =
-    useContext(CartContext);
+  const { cartItems, increaseItem, decreaseItem } = useContext(CartContext);
 
   return (
     <section className="container__side-bar">
@@ -26,8 +25,8 @@ const Sidebar = ({ open, setOpen }) => {
           </select>
         </div>
         <div className="cart-items">
-          {cartItems.map((item) => (
-            <div className="cart-items-list" key={item.id}>
+          {cartItems.map((item, key) => (
+            <div className="cart-items-list" key={key}>
               <div className="cart-items-list__title">
                 <div className="title"> {item.title}</div>
                 <div className="cart-items-list__price">
@@ -43,6 +42,7 @@ const Sidebar = ({ open, setOpen }) => {
               <div className="cart-items-list__image">
                 <img src={item.image_url} alt="product" />
               </div>
+              <ion-icon name="close" className="close"></ion-icon>
             </div>
           ))}
         </div>

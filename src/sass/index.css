@@ -366,6 +366,16 @@ html {
   width: 50%;
 }
 
+.side-bar .cart-items {
+  position: relative;
+}
+
+.side-bar .cart-items .close {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
 .side-bar .cart-items-list {
   height: 15rem;
   background-color: white;

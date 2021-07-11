@@ -36,6 +36,12 @@
 
   .cart-items {
     // padding: 0 1rem;
+    position: relative;
+    .close {
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
     &-list {
       height: 15rem;
       background-color: white;
