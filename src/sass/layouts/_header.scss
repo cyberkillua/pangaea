@@ -6,8 +6,12 @@
     height: 50vh;
   }
   .nav {
-    height: 20%;
-    margin: 0rem 5rem 0rem 3rem;
+    position: fixed;
+    background-color: $primary-color;
+    z-index: 20;
+    height: 15%;
+    width: 100%;
+    padding: 0rem 5rem 0rem 3rem;
     border-bottom: 2px solid $light-grey;
     display: flex;
     align-items: center;
@@ -86,13 +90,13 @@
   }
 
   &__second-section {
-    padding: 5rem 10rem;
+    padding: 15rem 10rem 5rem 10rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
     @include small-screen {
       display: block;
-      padding: 10rem 5rem 5rem 5rem;
+      padding: 15rem 5rem 5rem 5rem;
     }
     &--text {
       &__big {

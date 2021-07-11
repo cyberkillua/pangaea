@@ -23,8 +23,8 @@ const CartState = ({ children }) => {
     dispatch({ type: REMOVE_ITEM, payload: id });
   };
 
-  const increaseItem = (id) => {
-    dispatch({ type: INCREASE_ITEM, payload: id });
+  const increaseItem = (item) => {
+    dispatch({ type: INCREASE_ITEM, payload: item });
   };
   const decreaseItem = (id) => {
     dispatch({ type: DECREASE_ITEM, payload: id });

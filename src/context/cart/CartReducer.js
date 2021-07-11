@@ -13,7 +13,15 @@ const CartReducer = (state, action) => {
         -1;
       if (isPresent) {
         return {
-          cartItems: INCREASE_ITEM,
+          cartItems: state.cartItems.map((item) => {
+            if (item.id === action.payload.id) {
+              return {
+                ...item,
+                quantity: item.quantity + 1,
+              };
+            }
+            return item;
+          }),
         };
       } else {
         return {
@@ -28,19 +36,21 @@ const CartReducer = (state, action) => {
         cartItems: state.cartItems.filter((item) => item.id !== action.payload),
       };
     }
-    case INCREASE_ITEM: {
-      return {
-        ...state,
 
-        cartItems: state.cartItems.map((item) => {
-          if (item.id === action.payload) {
-            return {
-              ...item,
-              quantity: item.quantity + 1,
-            };
-          }
-          return item;
-        }),
+    case INCREASE_ITEM: {
+        
+      const upadtedCartItems = state.cartItems.map((item) => {
+       
+        if (item.id === action.payload.id) {
+          return {
+            ...item,
+            quantity: item.quantity + 1,
+          };
+        }
+        return item;
+      });
+      return {
+        cartItems: upadtedCartItems,
       };
     }
     case DECREASE_ITEM: {

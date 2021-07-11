@@ -1,8 +1,10 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import CartContext from "../context/cart/CartContext";
+import SelectCurrency from "./SelectCurrency";
 
 const Sidebar = ({ open, setOpen }) => {
-  const { cartItems, increaseItem, decreaseItem } = useContext(CartContext);
+  const { cartItems, increaseItem, decreaseItem, removeItem } =
+    useContext(CartContext);
 
   return (
     <section className="container__side-bar">
@@ -17,12 +19,7 @@ const Sidebar = ({ open, setOpen }) => {
           Your Cart
         </div>
         <div className="currency-select">
-          <select>
-            <option value="FR">FR</option>
-            <option value="AR">AR</option>
-            <option defaultValue="EN">EN</option>
-            <option value="ES">ES</option>
-          </select>
+          <SelectCurrency />
         </div>
         <div className="cart-items">
           {cartItems.map((item, key) => (
@@ -33,7 +30,7 @@ const Sidebar = ({ open, setOpen }) => {
                   <div className="quantity">
                     <span onClick={() => decreaseItem(item.id)}>-</span>
                     <span>{item.quantity}</span>
-                    <span onClick={() => increaseItem(item.id)}>+</span>
+                    <span onClick={() => increaseItem(item)}>+</span>
                   </div>
                   NGN {item.price}
                 </div>
@@ -42,10 +39,25 @@ const Sidebar = ({ open, setOpen }) => {
               <div className="cart-items-list__image">
                 <img src={item.image_url} alt="product" />
               </div>
-              <ion-icon name="close" className="close"></ion-icon>
+              <ion-icon
+                name="close"
+                className="close"
+                onClick={() => removeItem(item.id)}
+              ></ion-icon>
             </div>
           ))}
         </div>
+
+        <section className="sub-total">
+          <p>subtotal</p>
+          <p>
+            NGN{" "}
+            {cartItems.reduce((acc, cv) => {
+              acc = acc + cv.price * cv.quantity;
+              return acc;
+            }, 0)}
+          </p>
+        </section>
       </section>
     </section>
   );

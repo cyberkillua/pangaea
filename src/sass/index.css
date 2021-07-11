@@ -55,8 +55,12 @@ html {
 }
 
 .header .nav {
-  height: 20%;
-  margin: 0rem 5rem 0rem 3rem;
+  position: fixed;
+  background-color: #F5F5F4;
+  z-index: 20;
+  height: 15%;
+  width: 100%;
+  padding: 0rem 5rem 0rem 3rem;
   border-bottom: 2px solid #E2E6E3;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -175,7 +179,7 @@ html {
 }
 
 .header__second-section {
-  padding: 5rem 10rem;
+  padding: 15rem 10rem 5rem 10rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -190,7 +194,7 @@ html {
 @media (max-width: 49em) {
   .header__second-section {
     display: block;
-    padding: 10rem 5rem 5rem 5rem;
+    padding: 15rem 5rem 5rem 5rem;
   }
 }
 
@@ -289,7 +293,7 @@ html {
 
 @media (max-width: 49em) {
   .product .product-1__img {
-    height: 7rem;
+    height: 6rem;
   }
 }
 
@@ -326,19 +330,22 @@ html {
 .background-blur {
   background-color: #E2E6E3;
   opacity: 0.8;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
+  z-index: 40;
 }
 
 .side-bar {
   background-color: #F5F5F4;
-  position: absolute;
+  overflow: scroll;
+  z-index: 40;
+  position: fixed;
   top: 0;
   right: 0;
-  height: 100vh;
+  height: 100%;
   width: 55rem;
   -webkit-animation: rightin 0.5s ease-in;
           animation: rightin 0.5s ease-in;
@@ -364,6 +371,20 @@ html {
       -ms-flex-pack: justify;
           justify-content: space-between;
   width: 50%;
+}
+
+.side-bar .currency-select {
+  margin-top: 2rem;
+}
+
+.side-bar .currency-select select {
+  background-color: white;
+  border: 3px solid #E2E6E3;
+  padding: 0 1em;
+  margin: 0;
+  height: 5rem;
+  width: 10rem;
+  font-size: 1.7rem;
 }
 
 .side-bar .cart-items {
@@ -445,6 +466,25 @@ html {
 
 .side-bar .cart-items-list__image img {
   height: 8rem;
+}
+
+.sub-total {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: absolute;
+  z-index: 50;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 10rem;
+  -webkit-box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.2);
+          box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.2);
+  padding: 2rem;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  background-color: #F5F5F4;
 }
 
 @-webkit-keyframes rightin {
