@@ -34,7 +34,6 @@ const CartState = ({ children }) => {
     <CartContext.Provider
       value={{
         cartItems: state.cartItems,
-        // smallCart: state.smallCart,
         addToCart,
         removeItem,
         increaseItem,

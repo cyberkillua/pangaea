@@ -54,12 +54,13 @@ const CartReducer = (state, action) => {
     case DECREASE_ITEM: {
       const upadtedCartItems = state.cartItems.map((item) => {
         if (item.id === action.payload.id) {
-          if (item.quantity > 0) {
+          if (item.quantity > 1) {
             return {
               ...item,
               quantity: item.quantity - 1,
             };
           }
+          
         }
         return item;
       });

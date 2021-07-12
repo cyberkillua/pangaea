@@ -1,25 +1,30 @@
 import { gql } from "@apollo/client";
 
+const NGN = "USD";
+
 export const LOAD_PROD = gql`
   query {
+    currency
     products {
       id
       title
       image_url
-      price(currency: NGN)
+      price(currency: ${NGN})
     }
   }
 `;
 
-export const LOAD_CUR = gql`
-  query {
-    currency
-  }
-`;
+
 
 export const GET_CUR = gql`
-  query Price($currency: String!) {
-    price(currency: $currency) 
+  query Price($currency: Currency!) {
+    currency
+    products {
+      id
+      title
+      image_url
+      price(currency: $currency)
+    }
   }
 `;
 

@@ -30,6 +30,7 @@ const client = new ApolloClient({
 
 function App() {
   const [open, setOpen] = useState(false);
+  
   return (
     <ApolloProvider client={client}>
       <div className="App">

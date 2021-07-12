@@ -1,33 +1,34 @@
-import { useState, useEffect } from "react";
-import { useLazyQuery, useQuery } from "@apollo/client";
-import { LOAD_CUR } from "../GraphQL/Queries";
+import { useEffect } from "react";
+import { useLazyQuery } from "@apollo/client";
+import { GET_CUR } from "../GraphQL/Queries";
 
 const SelectCurrency = () => {
-  //   const [products, { loading }] = useLazyQuery(LOAD_CUR_AND_PROD);
-  const [currency, setCurrency] = useState([]);
-  const { data, loading } = useQuery(LOAD_CUR);
+  const [getNewPrice, { loading, data }] = useLazyQuery(GET_CUR);
 
   const getCurr = (e) => {
     console.log(e.target.value);
-    // onClick=
-    // products({ variables: { currency: e.target.value } });
+    getNewPrice({
+      variables: { currency: e.target.value },
+    });
   };
 
   useEffect(() => {
-    if (data) {
-      setCurrency(data.currency);
-      // console.log(data)
-    }
-  }, [data]);
+   
+    getNewPrice({ variables: { currency: "NGN" } });
+  }, [getNewPrice]);
   if (loading) return <p>Loading ...</p>;
+  console.log(data);
+
   return (
     <div>
       <select onChange={getCurr}>
-        {currency.map((item, key) => (
-          <option value={item.currency} key={key}>
-            {item}
-          </option>
-        ))}
+        {data
+          ? data.currency.map((item, key) => (
+              <option value={item.currency} key={key}>
+                {item}
+              </option>
+            ))
+          : ""}
       </select>
     </div>
   );
