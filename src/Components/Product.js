@@ -2,12 +2,12 @@ import { useEffect, useState, useContext } from "react";
 import { useQuery } from "@apollo/client";
 import { LOAD_PROD } from "../GraphQL/Queries";
 import CartContext from "../context/cart/CartContext";
+import CurrencyFormat from "react-currency-format";
 
 const Product = ({ open, setOpen }) => {
   const { data } = useQuery(LOAD_PROD);
   const [product, setProduct] = useState([]);
-  const { addToCart} = useContext(CartContext);
-
+  const { addToCart } = useContext(CartContext);
   useEffect(() => {
     if (data) {
       setProduct(data.products);
@@ -18,7 +18,6 @@ const Product = ({ open, setOpen }) => {
   const addItToCart = (item) => {
     setOpen(!open);
     addToCart(item);
-    
   };
 
   return (
@@ -34,7 +33,13 @@ const Product = ({ open, setOpen }) => {
 
             <p className="product-1__title">{item.title}</p>
             <p className="product-1__price">
-              NGN {item.price.toLocaleString("en-US")}.00
+              {/* NGN {item.price.toLocaleString("en-US")}.00 */}
+              <CurrencyFormat
+                value={item.price}
+                displayType={"text"}
+                thousandSeparator={true}
+                prefix={"NGN"}
+              />
             </p>
             <div className="product-1__btn">
               <button

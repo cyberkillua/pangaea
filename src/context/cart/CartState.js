@@ -26,8 +26,8 @@ const CartState = ({ children }) => {
   const increaseItem = (item) => {
     dispatch({ type: INCREASE_ITEM, payload: item });
   };
-  const decreaseItem = (id) => {
-    dispatch({ type: DECREASE_ITEM, payload: id });
+  const decreaseItem = (item) => {
+    dispatch({ type: DECREASE_ITEM, payload: item });
   };
 
   return (

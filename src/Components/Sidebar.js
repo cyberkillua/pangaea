@@ -1,10 +1,15 @@
 import { useContext } from "react";
 import CartContext from "../context/cart/CartContext";
 import SelectCurrency from "./SelectCurrency";
+import CurrencyFormat from "react-currency-format";
 
 const Sidebar = ({ open, setOpen }) => {
   const { cartItems, increaseItem, decreaseItem, removeItem } =
     useContext(CartContext);
+  const subtotal = cartItems.reduce((acc, cv) => {
+    acc = acc + cv.price * cv.quantity;
+    return acc;
+  }, 0);
 
   return (
     <section className="container__side-bar">
@@ -22,40 +27,48 @@ const Sidebar = ({ open, setOpen }) => {
           <SelectCurrency />
         </div>
         <div className="cart-items">
-          {cartItems.map((item, key) => (
-            <div className="cart-items-list" key={key}>
-              <div className="cart-items-list__title">
-                <div className="title"> {item.title}</div>
-                <div className="cart-items-list__price">
-                  <div className="quantity">
-                    <span onClick={() => decreaseItem(item.id)}>-</span>
-                    <span>{item.quantity}</span>
-                    <span onClick={() => increaseItem(item)}>+</span>
+          {cartItems.length === 0
+            ? "cart is empty"
+            : cartItems.map((item, key) => (
+                <div className="cart-items-list" key={key}>
+                  <div className="cart-items-list__title">
+                    <div className="title"> {item.title}</div>
+                    <div className="cart-items-list__price">
+                      <div className="quantity">
+                        <span onClick={() => decreaseItem(item)}>-</span>
+                        <span>{item.quantity}</span>
+                        <span onClick={() => increaseItem(item)}>+</span>
+                      </div>
+                      <CurrencyFormat
+                        value={item.price}
+                        displayType={"text"}
+                        thousandSeparator={true}
+                        prefix={"NGN"}
+                      />
+                    </div>
                   </div>
-                  NGN {item.price}
-                </div>
-              </div>
 
-              <div className="cart-items-list__image">
-                <img src={item.image_url} alt="product" />
-              </div>
-              <ion-icon
-                name="close"
-                className="close"
-                onClick={() => removeItem(item.id)}
-              ></ion-icon>
-            </div>
-          ))}
+                  <div className="cart-items-list__image">
+                    <img src={item.image_url} alt="product" />
+                  </div>
+                  <ion-icon
+                    name="close"
+                    className="close"
+                    onClick={() => removeItem(item.id)}
+                  ></ion-icon>
+                </div>
+              ))}
         </div>
 
         <section className="sub-total">
           <p>subtotal</p>
           <p>
-            NGN{" "}
-            {cartItems.reduce((acc, cv) => {
-              acc = acc + cv.price * cv.quantity;
-              return acc;
-            }, 0)}
+            <CurrencyFormat
+              value={subtotal}
+              displayType={"text"}
+              thousandSeparator={true}
+              prefix={"NGN"}
+            />
           </p>
         </section>
       </section>

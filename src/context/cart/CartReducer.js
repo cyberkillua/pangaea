@@ -38,9 +38,7 @@ const CartReducer = (state, action) => {
     }
 
     case INCREASE_ITEM: {
-        
       const upadtedCartItems = state.cartItems.map((item) => {
-       
         if (item.id === action.payload.id) {
           return {
             ...item,
@@ -54,18 +52,19 @@ const CartReducer = (state, action) => {
       };
     }
     case DECREASE_ITEM: {
-      return {
-        ...state,
-
-        cartItems: state.cartItems.map((item) => {
-          if (item.id === action.payload) {
+      const upadtedCartItems = state.cartItems.map((item) => {
+        if (item.id === action.payload.id) {
+          if (item.quantity > 0) {
             return {
               ...item,
               quantity: item.quantity - 1,
             };
           }
-          return item;
-        }),
+        }
+        return item;
+      });
+      return {
+        cartItems: upadtedCartItems,
       };
     }
     default:
