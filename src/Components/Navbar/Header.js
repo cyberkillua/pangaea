@@ -13,10 +13,9 @@ const Header = ({ open, setOpen }) => {
       <nav className="nav">
         <div className="nav-logo__container">
           <img src={Logo} alt="logo" className="nav__logo" />
-          <NormalNav />
-          <Burger />
         </div>
-
+        <NormalNav />
+        <Burger />
         <div className="nav__account">
           <p>Account</p>
           <div className="nav__account--cart">
