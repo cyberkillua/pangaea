@@ -17,18 +17,18 @@ const Sidebar = ({ open, setOpen }) => {
       <section className="side-bar">
         <div className="side-bar__heading">
           <ion-icon
-            name="chevron-forward-circle-outline"
+            name="chevron-forward-outline"
             className="side-bar__back-icon"
             onClick={() => setOpen(!open)}
           ></ion-icon>
-          Your Cart
+          <p className="heading-text">Your Cart</p>
         </div>
         <div className="currency-select">
           <SelectCurrency />
         </div>
         <div className="cart-items">
           {cartItems.length === 0
-            ? "cart is empty"
+            ? <p className="empty-cart">There are no items in your cart.</p>
             : cartItems.map((item, key) => (
                 <div className="cart-items-list" key={key}>
                   <div className="cart-items-list__title">
