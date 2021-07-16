@@ -15,21 +15,23 @@ const Sidebar = ({ open, setOpen }) => {
     <section className="container__side-bar">
       <div className="background-blur"></div>
       <section className="side-bar">
-        <div className="side-bar__heading">
-          <ion-icon
-            name="chevron-forward-outline"
-            className="side-bar__back-icon"
-            onClick={() => setOpen(!open)}
-          ></ion-icon>
-          <p className="heading-text">Your Cart</p>
-        </div>
-        <div className="currency-select">
-          <SelectCurrency />
-        </div>
-        <div className="cart-items">
-          {cartItems.length === 0
-            ? <p className="empty-cart">There are no items in your cart.</p>
-            : cartItems.map((item, key) => (
+        <div>
+          <div className="side-bar__heading">
+            <ion-icon
+              name="chevron-forward-outline"
+              className="side-bar__back-icon"
+              onClick={() => setOpen(!open)}
+            ></ion-icon>
+            <p className="heading-text">Your Cart</p>
+          </div>
+          <div className="currency-select">
+            <SelectCurrency />
+          </div>
+          <div className="cart-items">
+            {cartItems.length === 0 ? (
+              <p className="empty-cart">There are no items in your cart.</p>
+            ) : (
+              cartItems.map((item, key) => (
                 <div className="cart-items-list" key={key}>
                   <div className="cart-items-list__title">
                     <div className="title"> {item.title}</div>
@@ -57,12 +59,13 @@ const Sidebar = ({ open, setOpen }) => {
                     onClick={() => removeItem(item.id)}
                   ></ion-icon>
                 </div>
-              ))}
+              ))
+            )}
+          </div>
         </div>
-
         <section className="sub-total">
-          <p>subtotal</p>
-          <p>
+          <p className="sub">Subtotal</p>
+          <p className="price"> 
             <CurrencyFormat
               value={subtotal}
               displayType={"text"}

@@ -27,6 +27,9 @@
   font-family: "FF Bau Regular", san-serif;
 
   color: $primary-text-color;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   @include small-screen {
     width: 100%;
   }
@@ -46,6 +49,9 @@
       letter-spacing: 1px;
       font-family: inherit;
       font-weight: 600;
+      @include small-screen {
+        font-size: 1.3rem;
+      }
     }
   }
   .currency-select {
@@ -131,16 +137,25 @@
 }
 .sub-total {
   display: flex;
-  position: absolute;
+  position: sticky;
   z-index: 50;
-  bottom: 0;
+  bottom: 0vh;
   left: 0;
-  width: 100%;
+  width: 105%;
   height: 10rem;
-  box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.2);
+  box-shadow: 0 -0.5rem 1rem rgba(0, 0, 0, 0.2);
   padding: 2rem;
   justify-content: space-between;
   background-color: $primary-color;
+  color: #1e2d2b;
+
+  .sub {
+    font-weight: 300;
+  }
+  .price {
+    font-weight: 700;
+    
+  }
 }
 @keyframes rightin {
   0% {
