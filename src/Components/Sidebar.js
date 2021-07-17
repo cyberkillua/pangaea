@@ -15,7 +15,7 @@ const Sidebar = ({ open, setOpen }) => {
     <section className="container__side-bar">
       <div className="background-blur"></div>
       <section className="side-bar">
-        <div>
+        <div className="top-bar">
           <div className="side-bar__heading">
             <ion-icon
               name="chevron-forward-outline"
