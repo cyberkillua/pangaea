@@ -3,6 +3,7 @@ import {
   REMOVE_ITEM,
   INCREASE_ITEM,
   DECREASE_ITEM,
+  ADD_PRODUCT,
 } from "../Types";
 
 const CartReducer = (state, action) => {
@@ -11,24 +12,24 @@ const CartReducer = (state, action) => {
       const isPresent =
         state.cartItems.findIndex((item) => item.id === action.payload.id) !==
         -1;
-      if (isPresent) {
-        return {
-          cartItems: state.cartItems.map((item) => {
-            if (item.id === action.payload.id) {
-              return {
-                ...item,
-                quantity: item.quantity + 1,
-              };
-            }
-            return item;
-          }),
-        };
-      } else {
+      if (!isPresent)
         return {
           ...state,
           cartItems: [...state.cartItems, { ...action.payload, quantity: 1 }],
         };
-      }
+
+      return {
+        ...state,
+        cartItems: state.cartItems.map((item) => {
+          if (item.id === action.payload.id) {
+            return {
+              ...item,
+              quantity: item.quantity + 1,
+            };
+          }
+          return item;
+        }),
+      };
     }
     case REMOVE_ITEM: {
       return {
@@ -48,6 +49,7 @@ const CartReducer = (state, action) => {
         return item;
       });
       return {
+        ...state,
         cartItems: upadtedCartItems,
       };
     }
@@ -60,12 +62,18 @@ const CartReducer = (state, action) => {
               quantity: item.quantity - 1,
             };
           }
-          
         }
         return item;
       });
       return {
+        ...state,
         cartItems: upadtedCartItems,
+      };
+    }
+    case ADD_PRODUCT: {
+      return {
+        ...state,
+        updatedProduct: action.payload,
       };
     }
     default:

@@ -1,15 +1,19 @@
 import { useEffect, useContext } from "react";
 import { useLazyQuery } from "@apollo/client";
-import {  GET_CUR } from "../GraphQL/Queries";
+import { GET_CUR } from "../GraphQL/Queries";
 import CartContext from "../context/cart/CartContext";
 import CurrencyFormat from "react-currency-format";
 
 const Product = ({ open, setOpen }) => {
   const [getProduct, { loading, data }] = useLazyQuery(GET_CUR);
-  const { addToCart } = useContext(CartContext);
+  const { addToCart, addProduct, updatedProduct } = useContext(CartContext);
   useEffect(() => {
     getProduct({ variables: { currency: "NGN" } });
-  }, [getProduct]);
+    if (data) {
+      addProduct(data);
+    }
+    
+  }, [data]);
 
   const addItToCart = (item) => {
     setOpen(!open);
@@ -19,8 +23,8 @@ const Product = ({ open, setOpen }) => {
   return (
     <section className="product">
       <div className="product-container">
-        {data
-          ? data.products.map((item, key) => (
+        {updatedProduct.products
+          ? updatedProduct.products.map((item, key) => (
               <div className="product-1" key={item.id}>
                 <img
                   src={item.image_url}
@@ -34,7 +38,7 @@ const Product = ({ open, setOpen }) => {
                     value={item.price}
                     displayType={"text"}
                     thousandSeparator={true}
-                    prefix={"NGN"}
+                    prefix={item.currency}
                   />
                 </p>
                 <div className="product-1__btn">
