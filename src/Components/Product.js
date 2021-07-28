@@ -12,7 +12,6 @@ const Product = ({ open, setOpen }) => {
     if (data) {
       addProduct(data);
     }
-    
   }, [data]);
 
   const addItToCart = (item) => {
@@ -20,6 +19,7 @@ const Product = ({ open, setOpen }) => {
     addToCart(item);
   };
   if (loading) return <p>Loading ...</p>;
+ 
   return (
     <section className="product">
       <div className="product-container">
