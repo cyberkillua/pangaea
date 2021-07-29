@@ -30,12 +30,12 @@ const client = new ApolloClient({
 
 function App() {
   const [open, setOpen] = useState(false);
-  
+  const [value, setValue] = useState("NGN");
   return (
     <ApolloProvider client={client}>
       <div className="App">
-        <Header open={open} setOpen={setOpen} />
-        <Product open={open} setOpen={setOpen}/>
+        <Header open={open} setOpen={setOpen} value={value} setValue={setValue} />
+        <Product open={open} setOpen={setOpen} value={value}/>
       </div>
     </ApolloProvider>
   );

@@ -6,7 +6,7 @@ import Sidebar from "../Sidebar";
 import { useContext } from "react";
 import CartContext from "../../context/cart/CartContext";
 
-const Header = ({ open, setOpen }) => {
+const Header = ({ open, setOpen, value, setValue }) => {
   const { cartItems } = useContext(CartContext);
   return (
     <header className="header">
@@ -60,7 +60,7 @@ const Header = ({ open, setOpen }) => {
           </select>
         </div>
       </section>
-      {open && <Sidebar open={open} setOpen={setOpen} />}
+      {open && <Sidebar open={open} setOpen={setOpen} value={value} setValue={setValue}/>}
     </header>
   );
 };

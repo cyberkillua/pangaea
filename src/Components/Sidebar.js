@@ -3,7 +3,7 @@ import CartContext from "../context/cart/CartContext";
 import SelectCurrency from "./SelectCurrency";
 import CurrencyFormat from "react-currency-format";
 
-const Sidebar = ({ open, setOpen }) => {
+const Sidebar = ({ open, setOpen, value, setValue }) => {
   const { cartItems, increaseItem, decreaseItem, removeItem } =
     useContext(CartContext);
   const subtotal = cartItems.reduce((acc, cv) => {
@@ -25,7 +25,7 @@ const Sidebar = ({ open, setOpen }) => {
             <p className="heading-text">Your Cart</p>
           </div>
           <div className="currency-select">
-            <SelectCurrency />
+            <SelectCurrency  value={value} setValue={setValue}/>
           </div>
           <div className="cart-items">
             {cartItems.length === 0 ? (

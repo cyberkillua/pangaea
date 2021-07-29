@@ -4,15 +4,15 @@ import { GET_CUR } from "../GraphQL/Queries";
 import CartContext from "../context/cart/CartContext";
 import CurrencyFormat from "react-currency-format";
 
-const Product = ({ open, setOpen }) => {
+const Product = ({ open, setOpen, value,}) => {
   const [getProduct, { loading, data }] = useLazyQuery(GET_CUR);
   const { addToCart, addProduct, updatedProduct } = useContext(CartContext);
   useEffect(() => {
-    getProduct({ variables: { currency: "NGN" } });
+    getProduct({ variables: { currency: value } });
     if (data) {
       addProduct(data);
     }
-  }, [data]);
+  }, [data, value]);
 
   const addItToCart = (item) => {
     setOpen(!open);
@@ -38,7 +38,7 @@ const Product = ({ open, setOpen }) => {
                     value={item.price}
                     displayType={"text"}
                     thousandSeparator={true}
-                    prefix={item.currency}
+                    prefix={value}
                   />
                 </p>
                 <div className="product-1__btn">
